@@ -25,6 +25,7 @@ restService.post('/echo', function(req, res) {
 restService.post('/prodinfo',function(req,res){
     if(req.body.result.action=='stockinfo'){
         var result=req.body.result.parameters['type'];
+        var 
         // Map data
         productData.map(data => {
             if (data.name == result || data.product_id == result) {
@@ -36,7 +37,7 @@ restService.post('/prodinfo',function(req,res){
     
     // var result="abc";
     return res.json({
-        speech: result,
+        speech: "The quantity is"+result,
         displayText: result,
         source: 'webhook-echo-sample'
     });
