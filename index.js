@@ -64,13 +64,13 @@ restService.post('/prodinfo', function (req, res) {
         //         }
         //     )
         // })
-        var txt=allData[0]
+
         return res.json({
             speech: "The products are" + allData[0],
-            displayText: "The products are" + allData[0],
+            displayText: allData[0],
             source: 'webhook-echo-sample'
-        
-    
+        });
+    }
     // All products
 })
 
