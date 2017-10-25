@@ -66,7 +66,7 @@ restService.post('/prodinfo', function (req, res) {
         // })
 
         return res.json({
-            speech: "The products are" + allData[0],
+            speech: "The products areeeeee" + allData[0]+allData[1],
             displayText: allData[0]+allData[1],
             source: 'webhook-echo-sample'
         });
