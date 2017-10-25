@@ -69,6 +69,10 @@ restService.post('/prodinfo', function (req, res) {
             speech: "The products are" + allData[0],
             displayText: allData[0],
             source: 'webhook-echo-sample'
+        },{
+            speech: "The products are" + allData[1],
+            displayText: allData[1],
+            source: 'webhook-echo-sample'
         });
     }
     // All products
