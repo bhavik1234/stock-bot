@@ -52,11 +52,19 @@ restService.post('/prodinfo', function (req, res) {
         // Map data
 
         // var result="abc";
-        return res.json({
-            speech: "The products are" + allData[0],
-            displayText: allData[0],
-            source: 'webhook-echo-sample'
-        });
+
+        var output=[]
+        allData.forEach(function(xyz){
+            output.push(
+                {
+                    speech: "The products are" + xyz,
+                    displayText: xyz,
+                    source: 'webhook-echo-sample'
+                }
+            )
+        })
+        
+        return res.json(output);
     }
     // All products
 })
