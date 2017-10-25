@@ -64,9 +64,13 @@ restService.post('/prodinfo', function (req, res) {
         //         }
         //     )
         // })
+        var txt=''
+        allData.forEach(prod=>{
+            txt+="  " + prod;
+        })
 
         return res.json({
-            speech: "The products areeeeee" + allData[0]+allData[1],
+            speech: "The products are ::" + txt,
             displayText: allData[0]+allData[1],
             source: 'webhook-echo-sample'
         });
