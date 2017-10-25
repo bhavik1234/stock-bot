@@ -1,0 +1,6 @@
+{
+    "name": "Stock-Status-bot",
+    "description": "Webhook echo sample",
+    "repository": "https://github.com/bhavik1234/stock-bot.git",
+    "keywords": ["api.ai", "natural language"]
+  }
