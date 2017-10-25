@@ -11,8 +11,8 @@ restService.use(bodyParser.urlencoded({
 
 restService.use(bodyParser.json());
 
-restService.post('/echo', function(req, res) {
-    
+restService.post('/echo', function (req, res) {
+
     var speech = req.body.result && req.body.result.parameters && req.body.result.parameters.echoText ? req.body.result.parameters.echoText : "Seems like some problem. Speak again."
     return res.json({
         speech: speech,
@@ -22,26 +22,43 @@ restService.post('/echo', function(req, res) {
 });
 
 
-restService.post('/prodinfo',function(req,res){
-    if(req.body.result.action=='stockinfo'){
-        var result=req.body.result.parameters['type'];
-    
+restService.post('/prodinfo', function (req, res) {
+    if (req.body.result.action == 'stockinfo') {
+        var result = req.body.result.parameters['type'];
+
         // Map data
         productData.map(data => {
             if (data.name == result || data.product_id == result) {
-                result=data.qty;
+                result = data.qty;
             }
         })
-      
         // Map data
-    
-    // var result="abc";
-    return res.json({
-        speech: "The quantity is"+result,
-        displayText: result,
-        source: 'webhook-echo-sample'
-    });
-}
+
+        // var result="abc";
+        return res.json({
+            speech: "The quantity is" + result,
+            displayText: result,
+            source: 'webhook-echo-sample'
+        });
+    }
+    // All products
+    if (req.body.result.action == 'allproducts') {
+        var allData = [];
+
+        // Map data
+        productData.map(data => {
+            allData.push(data.name);
+        })
+        // Map data
+
+        // var result="abc";
+        return res.json({
+            speech: "The products are" + allData,
+            displayText: allData,
+            source: 'webhook-echo-sample'
+        });
+    }
+    // All products
 })
 
 // restService.post('/slack-test', function(req, res) {
@@ -101,6 +118,6 @@ restService.post('/prodinfo',function(req,res){
 
 
 
-restService.listen((process.env.PORT || 8000), function() {
+restService.listen((process.env.PORT || 8000), function () {
     console.log("Server is listening to 8000");
 });
