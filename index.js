@@ -53,16 +53,20 @@ restService.post('/prodinfo', function (req, res) {
 
         // var result="abc";
 
-        var output=[]
-        allData.map(xyz=>{
-            output.push(
-                {
-                    speech: "The products are" + xyz,
-                    displayText: xyz,
-                    source: 'webhook-echo-sample'
-                }
-            )
-        })
+        var output=[{         
+                       speech: "The products are" + allData[0],
+                       displayText: allData[0],
+                  source: 'webhook-echo-sample'}]
+                    
+        // allData.map(xyz=>{
+        //     output.push(
+        //         {
+        //             speech: "The products are" + xyz,
+        //             displayText: xyz,
+        //             source: 'webhook-echo-sample'
+        //         }
+        //     )
+        // })
         
         return res.json(output);
     }
