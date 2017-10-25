@@ -54,7 +54,7 @@ restService.post('/prodinfo', function (req, res) {
         // var result="abc";
 
         var output=[]
-        allData.forEach(function(xyz){
+        allData.map(xyz=>{
             output.push(
                 {
                     speech: "The products are" + xyz,
@@ -63,7 +63,7 @@ restService.post('/prodinfo', function (req, res) {
                 }
             )
         })
-        console.log(output);
+        
         return res.json(output);
     }
     // All products
