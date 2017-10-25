@@ -53,11 +53,8 @@ restService.post('/prodinfo', function (req, res) {
 
         // var result="abc";
 
-        var output=[{         
-                       speech: "The products are" + allData[0],
-                       displayText: allData[0],
-                  source: 'webhook-echo-sample'}]
-                    
+      
+
         // allData.map(xyz=>{
         //     output.push(
         //         {
@@ -67,8 +64,12 @@ restService.post('/prodinfo', function (req, res) {
         //         }
         //     )
         // })
-        
-        return res.json(output);
+
+        return res.json({
+            speech: "The products are" + allData[0],
+            displayText: allData[0],
+            source: 'webhook-echo-sample'
+        });
     }
     // All products
 })
