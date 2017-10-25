@@ -63,7 +63,7 @@ restService.post('/prodinfo', function (req, res) {
                 }
             )
         })
-        
+        console.log(output);
         return res.json(output);
     }
     // All products
