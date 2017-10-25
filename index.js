@@ -24,7 +24,16 @@ restService.post('/echo', function(req, res) {
 
 restService.post('/prodinfo',function(req,res){
     if(req.body.result.action=='stockinfo'){
-    var result=req.body.result.parameters['type'];
+        var result=req.body.result.parameters['type'];
+        // Map data
+        productData.map(data => {
+            if (data.name == result || data.product_id == result) {
+                result=data.qty;
+            }
+        })
+      
+        // Map data
+    
     // var result="abc";
     return res.json({
         speech: result,
