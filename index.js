@@ -24,34 +24,34 @@ restService.post('/echo', function (req, res) {
 //Name of brands
 restService.get('/demo/:brand', function (req, res) {
     // console.log(req.params.brand)
-    var modprice = "";
-    productData.map(data => {
-        data.brands.map(brdata => {
-            brdata.models.map(model => {
-                if (model.model == "Galaxy s7") {
-                    modprice = model.price;
-                }
-            })
-        })
-        console.log(modprice);
-    })
-
+    // var modprice = "";
     // productData.map(data => {
-    //     var brstr = "";
-    //     var modstr = "";
-    //     if (data.name == "phone") {
-    //         data.brands.map(brdata => {
-    //             console.log("Hello")
-    //             if (brdata.brand == "apple") {
-    //                 brdata.models.map(model => {
-    //                     modstr += "" + model.model;
-    //                 })
-    //                 brstr += " " + modstr + ","
+    //     data.brands.map(brdata => {
+    //         brdata.models.map(model => {
+    //             if (model.model == "Galaxy s7") {
+    //                 modprice = model.price;
     //             }
     //         })
-    //         console.log(brstr);
-    //     }
+    //     })
+    //     console.log(modprice);
     // })
+
+    productData.map(data => {
+        var brstr = "";
+        var modstr = "";
+        if (data.name == "phone") {
+            data.brands.map(brdata => {
+                console.log("Hello")
+                if (brdata.brand == "samsung") {
+                    brdata.models.map(model => {
+                        modstr += "" + model.model;
+                    })
+                    brstr += " " + modstr + ","
+                }
+            })
+            console.log(brstr);
+        }
+    })
 
 
     // productData.map(data => {
@@ -122,26 +122,26 @@ restService.post('/prodinfo', function (req, res) {
     if (req.body.result.action == "modelsavailable") {
         var result = req.body.result.parameters['type'];
         var brresult = req.body.result.parameters['brand'];
-   productData.map(data => {
-        var brstr = "";
-        var modstr = "";
-        if (data.name == result) {
-            data.brands.map(brdata => {
-                if (brdata.brand == brresult) {
-                    brdata.models.map(model => {
-                        modstr += "" + model.model;
-                    })
-                    brstr += " " + modstr + ","
-                }
-            })
-            
-        }
-    })
-   return res.json({
-       speech: "The models available are " + brstr,
-       displayText: "The models available are " + brstr,
-       source: 'webhook-echo-sample'
-   });
+        productData.map(data => {
+            var brstr = "";
+            var modstr = "";
+            if (data.name == result) {
+                data.brands.map(brdata => {
+                    if (brdata.brand == brresult) {
+                        brdata.models.map(model => {
+                            modstr += "" + model.model;
+                        })
+                        brstr += " " + modstr + ","
+                    }
+                })
+
+            }
+        })
+        return res.json({
+            speech: "The models available are " + brstr,
+            displayText: "The models available are " + brstr,
+            source: 'webhook-echo-sample'
+        });
     }
 
     // MOdel name of particular phone close
