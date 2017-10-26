@@ -12,7 +12,7 @@ var data = [{
     },
     {
         brand: "apple",
-        apple: [
+        models: [
             { model: "iPhone 7", price: 40000 },
             { model: "iPhone X", price: 80000 }
         ]
