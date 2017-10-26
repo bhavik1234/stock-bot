@@ -47,27 +47,56 @@ restService.get('/demo/:brand', function (req, res) {
 //demo api
 restService.post('/prodinfo', function (req, res) {
 
-    //Brand
-    var brstr = "";
+    //Brand names
+
     if (req.body.result.action == "brands") {
+        var brstr = "";
         var result = req.body.result.parameters['type'];
         productData.map(data => {
             if (data.name == result) {
                 data.brands.map(brname => {
-                    brstr +=" "+brname.brand;
+                    brstr += " " + brname.brand + ",";
                 })
             }
         })
         return res.json({
-            speech: "The brand names are" + brstr,
-            displayText: "The brand names are" + brstr,
+            speech: "The brand names available are" + brstr,
+            displayText: "The brand names available are" + brstr,
             source: 'webhook-echo-sample'
         });
     }
     // Brand close
 
+    // Model of particular phone
+    if (req.body.result.action == models) {
+        var brstr = "";
+        var modstr = "";
+        var brresult = req.body.result.parameters['brand'];
+        var result = req.body.result.parameters['type'];
+        productData.map(data => {
+            if (data.name == result) {
+                data.brands.map(brdata => {
+                
+                    if (brdata.brand == brresult) {
+                        brdata.models.map(model=>{
+                            modstr+=""+model.model;
+                        })
+                        brstr += " " + modstr + ","
+                    }
+                })
+            }
+        })
+
+        return res.json({
+            speech: "The quantity is" + brstr,
+            displayText: brstr,
+            source: 'webhook-echo-sample'
+        });
+    }
+    // Model of particular phone close
 
 
+    //Quantity left in stock
     if (req.body.result.action == 'stockinfo') {
         var result = req.body.result.parameters['type'];
 
@@ -79,13 +108,15 @@ restService.post('/prodinfo', function (req, res) {
         })
         // Map data
 
-        // var result="abc";
+
         return res.json({
             speech: "The quantity is" + result,
             displayText: result,
             source: 'webhook-echo-sample'
         });
     }
+    //Quantity left in stock close
+
     // All products
     if (req.body.result.action == 'allproducts') {
         var allData = [];
@@ -107,7 +138,7 @@ restService.post('/prodinfo', function (req, res) {
             source: 'webhook-echo-sample'
         });
     }
-    // All products
+    // All products close
 })
 
 // restService.post('/slack-test', function(req, res) {
