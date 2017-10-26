@@ -158,8 +158,8 @@ restService.post('/prodinfo', function (req, res) {
         })
 
         return res.json({
-            speech: "The Discount is" + moddiscount,
-            displayText: "The discount is" + moddiscount,
+            speech: "The Discount is" + result,
+            displayText: "The discount is" + result,
             source: 'webhook-echo-sample'
         });
     }
