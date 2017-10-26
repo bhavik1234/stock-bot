@@ -90,10 +90,8 @@ restService.post('/prodinfo', function (req, res) {
     if (req.body.result.action == "models") {
         var brstr = "";
         var modstr = "";
-        var modstr1 = "";
         var brresult = req.body.result.parameters['brand'];
         var result = req.body.result.parameters['type'];
-        modstr1=brresult+"  "+result;
         productData.map(data => {
             if (data.name == result) {
                 data.brands.map(brdata => {
@@ -109,8 +107,8 @@ restService.post('/prodinfo', function (req, res) {
         })
 
         return res.json({
-            speech: "hello " + brstr,
-            displayText: "hello "+brstr,
+            speech: "hello error" + brstr,
+            displayText: "hello error"+brstr,
             source: 'webhook-echo-sample'
         });
     }
