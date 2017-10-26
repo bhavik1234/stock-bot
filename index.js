@@ -54,7 +54,7 @@ restService.post('/prodinfo', function (req, res) {
         productData.map(data => {
             if (data.name == result) {
                 data.brands.map(brname => {
-                    brstr = +brname.brand;
+                    brstr +=" "+brname.brand;
                 })
             }
         })
