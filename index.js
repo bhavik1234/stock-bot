@@ -20,9 +20,55 @@ restService.post('/echo', function (req, res) {
         source: 'webhook-echo-sample'
     });
 });
+// demo api
+//Name of brands
+restService.get('/demo/:brand', function (req, res) {
+    // console.log(req.params.brand)
+    productData.map(data => {
+        data.brands.map(brdata => {
+            console.log(brdata.brand);
+            if(brdata.brand==req.params.brand)
+            {
+                brdata.models.map(modelData=>{
+                    if (modelData.model =="Galaxy s7")
+                    {
+                        res.json(modelData)
+                    }
+                })
+            }
 
+        })
 
+        // console.log(data.brand+"."+req.params.brand)
+        // if (data.name == "phone"&& data.brand+"."+req.params.brand) {
+        //     res.json(data.brand="");
+        // }
+    })
+})
+
+//demo api
 restService.post('/prodinfo', function (req, res) {
+
+    //Brand
+    var brstr="";
+    if(req.body.result.action=="brands")
+    {
+        var result = req.body.result.parameters['type'];
+        productData.map(data=>{
+            data.brands.map(brname=>{
+                brstr=+brname.brand;
+            })
+        })
+        return res.json({
+            speech:"The brand names are" + result,
+            displayText:"The brand names are" + result,
+            source: 'webhook-echo-sample'
+        });
+    }
+    // Brand close
+
+
+
     if (req.body.result.action == 'stockinfo') {
         var result = req.body.result.parameters['type'];
 
@@ -49,29 +95,16 @@ restService.post('/prodinfo', function (req, res) {
         productData.map(data => {
             allData.push(data.name);
         })
-        // Map data
+        // Map data close
 
-        // var result="abc";
-
-      
-
-        // allData.map(xyz=>{
-        //     output.push(
-        //         {
-        //             speech: "The products are" + xyz,
-        //             displayText: xyz,
-        //             source: 'webhook-echo-sample'
-        //         }
-        //     )
-        // })
-        var txt=''
-        allData.forEach(prod=>{
-            txt+="  " + prod;
+        var txt = ''
+        allData.forEach(prod => {
+            txt += "  " + prod;
         })
 
         return res.json({
-            speech: "The products are ::" + txt,
-            displayText: allData[0]+allData[1],
+            speech: "The products are" + txt,
+            displayText: "The products are " + txt,
             source: 'webhook-echo-sample'
         });
     }
@@ -131,8 +164,6 @@ restService.post('/prodinfo', function (req, res) {
 //         }
 //     });
 // });
-
-
 
 
 restService.listen((process.env.PORT || 8000), function () {
