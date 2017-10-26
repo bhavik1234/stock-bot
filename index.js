@@ -27,11 +27,9 @@ restService.get('/demo/:brand', function (req, res) {
     productData.map(data => {
         data.brands.map(brdata => {
             console.log(brdata.brand);
-            if(brdata.brand==req.params.brand)
-            {
-                brdata.models.map(modelData=>{
-                    if (modelData.model =="Galaxy s7")
-                    {
+            if (brdata.brand == req.params.brand) {
+                brdata.models.map(modelData => {
+                    if (modelData.model == "Galaxy s7") {
                         res.json(modelData)
                     }
                 })
@@ -50,18 +48,19 @@ restService.get('/demo/:brand', function (req, res) {
 restService.post('/prodinfo', function (req, res) {
 
     //Brand
-    var brstr="";
-    if(req.body.result.action=="brands")
-    {
+    var brstr = "";
+    if (req.body.result.action == "brands") {
         var result = req.body.result.parameters['type'];
-        productData.map(data=>{
-            data.brands.map(brname=>{
-                brstr=+brname.brand;
-            })
+        productData.map(data => {
+            if (data.name == result) {
+                data.brands.map(brname => {
+                    brstr = +brname.brand;
+                })
+            }
         })
         return res.json({
-            speech:"The brand names are" + result,
-            displayText:"The brand names are" + result,
+            speech: "The brand names are" + brstr,
+            displayText: "The brand names are" + brstr,
             source: 'webhook-echo-sample'
         });
     }
