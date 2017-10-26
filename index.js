@@ -57,11 +57,11 @@ restService.get('/demo/:brand', function (req, res) {
 
     //     })
 
-        // console.log(data.brand+"."+req.params.brand)
-        // if (data.name == "phone"&& data.brand+"."+req.params.brand) {
-        //     res.json(data.brand="");
-        // }
-    })
+    // console.log(data.brand+"."+req.params.brand)
+    // if (data.name == "phone"&& data.brand+"."+req.params.brand) {
+    //     res.json(data.brand="");
+    // }
+})
 
 //demo api
 restService.post('/prodinfo', function (req, res) {
@@ -92,23 +92,23 @@ restService.post('/prodinfo', function (req, res) {
         var modstr = "";
         var brresult = req.body.result.parameters['brand'];
         var result = req.body.result.parameters['type'];
-        // productData.map(data => {
-        //     if (data.name == result) {
-        //         data.brands.map(brdata => {
-                
-        //             if (brdata.brand == brresult) {
-        //                 brdata.models.map(model=>{
-        //                     modstr+=""+model.model;
-        //                 })
-        //                 brstr += " " + modstr + ","
-        //             }
-        //         })
-        //     }
-        // })
+        productData.map(data => {
+            if (data.name == result) {
+                data.brands.map(brdata => {
+
+                    if (brdata.brand == brresult) {
+                        brdata.models.map(model => {
+                            modstr += "" + model.model;
+                        })
+                        brstr += " " + modstr
+                    }
+                })
+            }
+        })
 
         return res.json({
-            speech: "hello error" + result,
-            displayText: "hello error"+result,
+            speech: "hello error" + brstr,
+            displayText: "hello error" + brstr,
             source: 'webhook-echo-sample'
         });
     }
