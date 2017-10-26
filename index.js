@@ -120,8 +120,8 @@ restService.post('/prodinfo', function (req, res) {
 
     // Model name  of particular phone
     if (req.body.result.action == "modelsavailable") {
-        var brstr = "";
-        var modstr = "";
+        var brstr1 = "";
+        var modstr1 = "";
         var result = req.body.result.parameters['type'];
         var brresult = req.body.result.parameters['brand'];
         productData.map(data => {
@@ -130,17 +130,17 @@ restService.post('/prodinfo', function (req, res) {
                 data.brands.map(brdata => {
                     if (brdata.brand == brresult) {
                         brdata.models.map(model => {
-                            modstr += "" + model.model;
+                            modstr1 += "" + model.model;
                         })
-                        brstr += " " + modstr + ","
+                        brstr1 += " " + modstr1 + ","
                     }
                 })
 
             }
         })
         return res.json({
-            speech: "The models available are " + brstr,
-            displayText: "The models available are " + brstr,
+            speech: "The models available are " + brstr1,
+            displayText: "The models available are " + brstr1,
             source: 'webhook-echo-sample'
         });
     }
