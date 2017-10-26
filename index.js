@@ -120,11 +120,12 @@ restService.post('/prodinfo', function (req, res) {
 
     // Model name  of particular phone
     if (req.body.result.action == "modelsavailable") {
+        var brstr = "";
+        var modstr = "";
         var result = req.body.result.parameters['type'];
         var brresult = req.body.result.parameters['brand'];
         productData.map(data => {
-            var brstr = "";
-            var modstr = "";
+            
             if (data.name == result) {
                 data.brands.map(brdata => {
                     if (brdata.brand == brresult) {
