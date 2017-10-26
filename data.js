@@ -6,15 +6,15 @@ var data = [{
         brand: "samsung",
         models:
         [
-            { model: "Galaxy s7", price: 40000 },
-            { model: "Galaxy Note 8", price: 6000 }]
+            { model: "Galaxy s7", price: 40000,discount:15},
+            { model: "Galaxy Note 8", price: 6000, discount:20 }]
 
     },
     {
         brand: "apple",
         models: [
-            { model: "iPhone 7", price: 40000 },
-            { model: "iPhone X", price: 80000 }
+            { model: "iPhone 7", price: 40000 ,discount:30},
+            { model: "iPhone X", price: 80000 ,discount:50}
         ]
     }
     ]
