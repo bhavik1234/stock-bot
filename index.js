@@ -92,19 +92,19 @@ restService.post('/prodinfo', function (req, res) {
         var modstr = "";
         var brresult = req.body.result.parameters['brand'];
         var result = req.body.result.parameters['type'];
-        productData.map(data => {
-            if (data.name == result) {
-                data.brands.map(brdata => {
+        // productData.map(data => {
+        //     if (data.name == result) {
+        //         data.brands.map(brdata => {
                 
-                    if (brdata.brand == brresult) {
-                        brdata.models.map(model=>{
-                            modstr+=""+model.model;
-                        })
-                        brstr += " " + modstr + ","
-                    }
-                })
-            }
-        })
+        //             if (brdata.brand == brresult) {
+        //                 brdata.models.map(model=>{
+        //                     modstr+=""+model.model;
+        //                 })
+        //                 brstr += " " + modstr + ","
+        //             }
+        //         })
+        //     }
+        // })
 
         return res.json({
             speech: "hello error" + brresult,
