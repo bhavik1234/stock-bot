@@ -116,11 +116,35 @@ restService.post('/prodinfo', function (req, res) {
             source: 'webhook-echo-sample'
         });
     }
-    // Model of particular phone close
-
-    // Price of particular phone
-
     // Price of particular phone close
+
+    // Model name  of particular phone
+    if (req.body.result.action == "modelsavailable") {
+        var result = req.body.result.parameters['type'];
+        var brresult = req.body.result.parameters['brand'];
+   productData.map(data => {
+        var brstr = "";
+        var modstr = "";
+        if (data.name == result) {
+            data.brands.map(brdata => {
+                if (brdata.brand == brresult) {
+                    brdata.models.map(model => {
+                        modstr += "" + model.model;
+                    })
+                    brstr += " " + modstr + ","
+                }
+            })
+            
+        }
+    })
+   return res.json({
+       speech: "The models available are " + brstr,
+       displayText: "The models available are " + brstr,
+       source: 'webhook-echo-sample'
+   });
+    }
+
+    // MOdel name of particular phone close
 
     //Quantity left in stock
     if (req.body.result.action == 'stockinfo') {
@@ -159,7 +183,7 @@ restService.post('/prodinfo', function (req, res) {
 
         return res.json({
             speech: "The Discount is" + moddiscount,
-            displayText: "The discount is " + moddiscount,
+            displayText: "The discount is" + moddiscount,
             source: 'webhook-echo-sample'
         });
     }
