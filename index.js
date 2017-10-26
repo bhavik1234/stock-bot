@@ -24,25 +24,44 @@ restService.post('/echo', function (req, res) {
 //Name of brands
 restService.get('/demo/:brand', function (req, res) {
     // console.log(req.params.brand)
-    productData.map(data => {
-        data.brands.map(brdata => {
-            console.log(brdata.brand);
-            if (brdata.brand == req.params.brand) {
-                brdata.models.map(modelData => {
-                    if (modelData.model == "Galaxy s7") {
-                        res.json(modelData)
-                    }
-                })
-            }
 
-        })
+
+    productData.map(data => {
+        var brstr = "";
+        var modstr = "";
+        if (data.name == "phone") {
+            data.brands.map(brdata => {
+
+                if (brdata.brand == "samsung") {
+                    brdata.models.map(model => {
+                        modstr += "" + model.model;
+                    })
+                    brstr += " " + modstr + ","
+                }
+            })
+            console.log(brstr);
+        }
+    })
+
+
+    // productData.map(data => {
+    //     data.brands.map(brdata => {
+    //         console.log(brdata.brand);
+    //         if (brdata.brand == req.params.brand) {
+    //             brdata.models.map(modelData => {
+    //                 if (modelData.model == "Galaxy s7") {
+    //                     res.json(modelData)
+    //                 }
+    //             })
+    //         }
+
+    //     })
 
         // console.log(data.brand+"."+req.params.brand)
         // if (data.name == "phone"&& data.brand+"."+req.params.brand) {
         //     res.json(data.brand="");
         // }
     })
-})
 
 //demo api
 restService.post('/prodinfo', function (req, res) {
@@ -68,7 +87,7 @@ restService.post('/prodinfo', function (req, res) {
     // Brand close
 
     // Model of particular phone
-    if (req.body.result.action == models) {
+    if (req.body.result.action == "models") {
         var brstr = "";
         var modstr = "";
         var brresult = req.body.result.parameters['brand'];
