@@ -109,8 +109,8 @@ restService.post('/prodinfo', function (req, res) {
         })
 
         return res.json({
-            speech: "hello error" ,
-            displayText: "hello error",
+            speech: "hello " + brstr,
+            displayText: "hello "+brstr,
             source: 'webhook-echo-sample'
         });
     }
