@@ -143,6 +143,28 @@ restService.post('/prodinfo', function (req, res) {
     }
     //Quantity left in stock close
 
+    // discount
+    if (req.body.result.action == "discount") {
+        var moddiscount = "";
+        var result = req.body.result.parameters['models'];
+        productData.map(data => {
+            data.brands.map(brdata => {
+                brdata.models.map(model => {
+                    if (model.model == result) {
+                        moddiscount = model.discount;
+                    }
+                })
+            })
+        })
+
+        return res.json({
+            speech: "The Discount is" + moddiscount,
+            displayText: "The discount is" + moddiscount,
+            source: 'webhook-echo-sample'
+        });
+    }
+    // discount closed
+
     // All products
     if (req.body.result.action == 'allproducts') {
         var allData = [];
