@@ -7,7 +7,7 @@ var data = [{
         models:
         [
             { model: "Galaxy s7", price: 40000 },
-            { model: "Galaxy NOte 8", price: 6000 }]
+            { model: "Galaxy Note 8", price: 6000 }]
 
     },
     {
