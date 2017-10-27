@@ -1,5 +1,4 @@
 'use strict';
-
 const express = require('express');
 const bodyParser = require('body-parser');
 var productData = require("./data");
@@ -8,7 +7,6 @@ const restService = express();
 restService.use(bodyParser.urlencoded({
     extended: true
 }));
-
 restService.use(bodyParser.json());
 
 restService.post('/echo', function (req, res) {
@@ -97,9 +95,7 @@ restService.get('/demo/:brand', function (req, res) {
 
 //demo api
 restService.post('/prodinfo', function (req, res) {
-
     //Brand names
-
     if (req.body.result.action == "brands") {
         var brstr = "";
         var result = req.body.result.parameters['type'];
@@ -277,6 +273,17 @@ restService.post('/prodinfo', function (req, res) {
         });
     }
     // All products close
+
+    // Demo purpose only
+    if (req.body.result.action == "phone") {
+        return res.json({
+            speech: "You have successfully entered action",
+            displayText: "You have successfully entered action",
+
+        });
+    }
+    // Demo purpose only
+
 })
 
 // restService.post('/slack-test', function(req, res) {
