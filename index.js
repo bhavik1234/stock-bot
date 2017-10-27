@@ -23,6 +23,28 @@ restService.post('/echo', function (req, res) {
 // demo api
 //Name of brands
 restService.get('/demo/:brand', function (req, res) {
+
+    let bestphone = " ";
+    let flag = 1;
+    productData.map(data => {
+        if (data.name == "phone") {
+            data.brands.map(brand => {
+                if (brand.brand == "any") {
+                    brand.models.map(model => {
+                        bestphone = "Name = " + model.model + " Price = " + model.price + " Discount = " + model.discount;
+                        console.log(bestphone);
+                        flag = 0;
+                    })
+                }
+                else {
+                    if (flag == 1) {
+                        bestphone = "The most trending phone is iphone X whose price is 80000 and there is a discount of  20";
+                        console.log(bestphone);
+                    }
+                }
+            })
+        }
+    })
     // console.log(req.params.brand)
     // var modprice = "";
     // productData.map(data => {
@@ -36,22 +58,22 @@ restService.get('/demo/:brand', function (req, res) {
     //     console.log(modprice);
     // })
 
-    productData.map(data => {
-        var brstr = "";
-        var modstr = "";
-        if (data.name == "phone") {
-            data.brands.map(brdata => {
-                console.log("Hello")
-                if (brdata.brand == "samsung") {
-                    brdata.models.map(model => {
-                        modstr += "" + model.model;
-                    })
-                    brstr += " " + modstr + ","
-                }
-            })
-            console.log(brstr);
-        }
-    })
+    // productData.map(data => {
+    //     var brstr = "";
+    //     var modstr = "";
+    //     if (data.name == "phone") {
+    //         data.brands.map(brdata => {
+    //             console.log("Hello")
+    //             if (brdata.brand == "samsung") {
+    //                 brdata.models.map(model => {
+    //                     modstr += "" + model.model;
+    //                 })
+    //                 brstr += " " + modstr + ","
+    //             }
+    //         })
+    //         console.log(brstr);
+    //     }
+    // })
 
 
     // productData.map(data => {
@@ -89,8 +111,8 @@ restService.post('/prodinfo', function (req, res) {
             }
         })
         return res.json({
-            speech: "The brand names available are" + brstr,
-            displayText: "The brand names available are" + brstr,
+            speech: "The brands available are" + brstr,
+            displayText: "The brands available are" + brstr,
             source: 'webhook-echo-sample'
         });
     }
@@ -111,8 +133,8 @@ restService.post('/prodinfo', function (req, res) {
         })
 
         return res.json({
-            speech: "The price is" + modprice,
-            displayText: "The price is" + modprice,
+            speech: "The price is " + modprice,
+            displayText: "The price is " + modprice,
             source: 'webhook-echo-sample'
         });
     }
@@ -125,7 +147,7 @@ restService.post('/prodinfo', function (req, res) {
         var result = req.body.result.parameters['type'];
         var brresult = req.body.result.parameters['brand'];
         productData.map(data => {
-            
+
             if (data.name == result) {
                 data.brands.map(brdata => {
                     if (brdata.brand == brresult) {
@@ -161,13 +183,38 @@ restService.post('/prodinfo', function (req, res) {
 
 
         return res.json({
-            speech: "The quantity is" + result,
+            speech: "The quantity left is " + result,
             displayText: result,
             source: 'webhook-echo-sample'
         });
     }
     //Quantity left in stock close
+    //trending phone
 
+    if (req.body.result.action == "bestphone") {
+        var bestphone = "";
+        var flag = 1;
+        var brandName = req.body.result.parameters['brand'];
+        var phoneType = req.body.result.parameters['type'];
+        productData.map(data => {
+            if (data.name == phoneType) {
+                data.brands.map(brand => {
+                    if (brand.brand == "brandName") {
+                        brand.models.map(model => {
+                            bestphone = "Name = " + model.model + " Price = " + model.price + " Discount = " + model.discount;
+                            flag = 0;
+                        })
+                    }
+                    else {
+                        if (flag == 1)
+                            bestphone = "The most trending phone is iphone X whose price is 80000 and there is a discount of  20";
+                    }
+                })
+            }
+        })
+
+    }
+    //trending phone close
     // discount
     if (req.body.result.action == "discount") {
         var moddiscount = "";
@@ -183,8 +230,8 @@ restService.post('/prodinfo', function (req, res) {
         })
 
         return res.json({
-            speech: "The Discount is" + moddiscount,
-            displayText: "The discount is" + moddiscount,
+            speech: "The discount is " + moddiscount,
+            displayText: "The discount is " + moddiscount,
             source: 'webhook-echo-sample'
         });
     }
@@ -206,7 +253,7 @@ restService.post('/prodinfo', function (req, res) {
         })
 
         return res.json({
-            speech: "The products are" + txt,
+            speech: "The products are " + txt,
             displayText: "The products are " + txt,
             source: 'webhook-echo-sample'
         });
