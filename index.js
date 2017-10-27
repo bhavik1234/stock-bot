@@ -137,6 +137,7 @@ restService.post('/prodinfo', function (req, res) {
             return res.json({
                 speech: "The price is " + modprice,
                 displayText: "The price is " + modprice,
+                url: "https://www.youtube.com/",
                 source: 'webhook-echo-sample'
             });
         }
