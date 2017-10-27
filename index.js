@@ -135,8 +135,8 @@ restService.post('/prodinfo', function (req, res) {
         })
         if (flag == 0) {
             return res.json({
-                speech: "The price is " + modprice,
-                displayText: "The price is " + modprice,
+                speech: "The price iss " + modprice,
+                displayText: "The price iss " + modprice,
                 url: "https://www.youtube.com/",
                 source: 'webhook-echo-sample'
             });
@@ -146,7 +146,6 @@ restService.post('/prodinfo', function (req, res) {
                 speech: "Sorry this model is not available",
                 displayText: "Sorry this model is not available",
                 source: 'webhook-echo-sample'
-
             })
             }
     }
