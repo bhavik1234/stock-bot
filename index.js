@@ -135,9 +135,10 @@ restService.post('/prodinfo', function (req, res) {
         })
         if (flag == 0) {
             return res.json({
-                speech: "The price iss " + modprice,
-                displayText: "The price iss " + modprice,
+                speech: "The price is " + modprice,
+                displayText: "The price is " + modprice,
                 url: "https://www.youtube.com/",
+                imageUrl:"http://images.indianexpress.com/2017/04/sachin-m4.jpg",
                 source: 'webhook-echo-sample'
             });
         }
