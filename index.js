@@ -199,7 +199,7 @@ restService.post('/prodinfo', function (req, res) {
         productData.map(data => {
             if (data.name == phoneType) {
                 data.brands.map(brand => {
-                    if (brand.brand == "brandName") {
+                    if (brand.brand == brandName) {
                         brand.models.map(model => {
                             bestphone ="The most trending phone in "+ brandName+ " is Name = " + model.model + " Price = " + model.price + " Discount = " + model.discount;
                             flag = 0;
