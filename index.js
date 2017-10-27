@@ -201,7 +201,7 @@ restService.post('/prodinfo', function (req, res) {
                 data.brands.map(brand => {
                     if (brand.brand == "brandName") {
                         brand.models.map(model => {
-                            bestphone = "Name = " + model.model + " Price = " + model.price + " Discount = " + model.discount;
+                            bestphone ="The most trending phone in "+ brandName+ " is Name = " + model.model + " Price = " + model.price + " Discount = " + model.discount;
                             flag = 0;
                         })
                     }
@@ -212,6 +212,11 @@ restService.post('/prodinfo', function (req, res) {
                 })
             }
         })
+        return res.json({
+            speech: bestphone,
+            displayText:  bestphone,
+            source: 'webhook-echo-sample'
+        });
 
     }
     //trending phone close
