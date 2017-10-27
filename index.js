@@ -120,7 +120,7 @@ restService.post('/prodinfo', function (req, res) {
 
     // Price of particular phone
     if (req.body.result.action == "pricemodel") {
-        let flag=1;
+        let flag = 1;
         var modprice = "";
         var result = req.body.result.parameters['models'];
         productData.map(data => {
@@ -128,26 +128,28 @@ restService.post('/prodinfo', function (req, res) {
                 brdata.models.map(model => {
                     if (model.model == result) {
                         modprice = model.price;
-                        flag=0;
+                        flag = 0;
                     }
                 })
             })
         })
-        if(flag==0){
-        return res.json({
-            speech: "The price is " + modprice,
-            displayText: "The price is " + modprice,
-            source: 'webhook-echo-sample'
-        });
-    }
-    else{
+        if (flag == 0) {
+            return res.json({
+                speech: "The price is " + modprice,
+                displayText: "The price is " + modprice,
+                source: 'webhook-echo-sample'
+            });
+        }
+        else {
             return res.json({
                 speech: "Sorry this model is not available",
                 displayText: "Sorry this model is not available",
                 source: 'webhook-echo-sample'
 
+            })
+            }
     }
-}
+
     // Price of particular phone close
 
     // Model name  of particular phone
@@ -211,7 +213,7 @@ restService.post('/prodinfo', function (req, res) {
                 data.brands.map(brand => {
                     if (brand.brand == brandName) {
                         brand.models.map(model => {
-                            bestphone ="The most trending phone in "+ brandName+ " is = " + model.model + " Price = " + model.price + " Discount = " + model.discount;
+                            bestphone = "The most trending phone in " + brandName + " is = " + model.model + " Price = " + model.price + " Discount = " + model.discount;
                             flag = 0;
                         })
                     }
@@ -224,7 +226,7 @@ restService.post('/prodinfo', function (req, res) {
         })
         return res.json({
             speech: bestphone,
-            displayText:  bestphone,
+            displayText: bestphone,
             source: 'webhook-echo-sample'
         });
 
