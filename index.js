@@ -210,7 +210,7 @@ restService.post('/prodinfo', function (req, res) {
                 data.brands.map(brand => {
                     if (brand.brand == brandName) {
                         brand.models.map(model => {
-                            bestphone = "The most trending phone in " + brandName + " is = " + model.model + " Price = " + model.price + " Discount = " + model.discount;
+                            bestphone = "The most trending phone in " + brandName + " is " + model.model + " Price = " + model.price + " Discount = " + model.discount;
                             flag = 0;
                         })
                     }
@@ -244,8 +244,8 @@ restService.post('/prodinfo', function (req, res) {
         })
 
         return res.json({
-            speech: "The discount is " + moddiscount,
-            displayText: "The discount is " + moddiscount,
+            speech: "The discount is " + moddiscount+" %",
+            displayText: "The discount is " + moddiscount+" %",
             source: 'webhook-echo-sample'
         });
     }
@@ -274,71 +274,63 @@ restService.post('/prodinfo', function (req, res) {
     }
     // All products close
 
-    // Demo purpose only
-    if (req.body.result.action == "phone") {
-        return res.json({
-            speech: "You have successfully entered action",
-            displayText: "You have successfully entered action",
-
-        });
-    }
-    // Demo purpose only
 
 })
 
-// restService.post('/slack-test', function(req, res) {
+restService.post('/slack-test', function(req, res) {
 
-//     var slack_message = {
-//         "text": "Details of JIRA board for Browse and Commerce",
-//         "attachments": [{
-//             "title": "JIRA Board",
-//             "title_link": "http://www.google.com",
-//             "color": "#36a64f",
+    var slack_message = {
+        "text": "Details of JIRA board for Browse and Commerce",
+        "attachments": [{
+            "title": "JIRA Board",
+            "title_link": "http://www.google.com",
+            "color": "#36a64f",
 
-//             "fields": [{
-//                 "title": "Epic Count",
-//                 "value": "50",
-//                 "short": "false"
-//             }, {
-//                 "title": "Story Count",
-//                 "value": "40",
-//                 "short": "false"
-//             }],
+            "fields": [{
+                "title": "Epic Count",
+                "value": "50",
+                "short": "false"
+            }, {
+                "title": "Story Count",
+                "value": "40",
+                "short": "false"
+            }],
 
-//             "thumb_url": "https://stiltsoft.com/blog/wp-content/uploads/2016/01/5.jira_.png"
-//         }, {
-//             "title": "Story status count",
-//             "title_link": "http://www.google.com",
-//             "color": "#f49e42",
 
-//             "fields": [{
-//                 "title": "Not started",
-//                 "value": "50",
-//                 "short": "false"
-//             }, {
-//                 "title": "Development",
-//                 "value": "40",
-//                 "short": "false"
-//             }, {
-//                 "title": "Development",
-//                 "value": "40",
-//                 "short": "false"
-//             }, {
-//                 "title": "Development",
-//                 "value": "40",
-//                 "short": "false"
-//             }]
-//         }]
-//     }
-//     return res.json({
-//         speech: "speech",
-//         displayText: "speech",
-//         source: 'webhook-echo-sample',
-//         data: {
-//             "slack": slack_message
-//         }
-//     });
-// });
+            "thumb_url": "https://stiltsoft.com/blog/wp-content/uploads/2016/01/5.jira_.png"
+        }, {
+            "title": "Story status count",
+            "title_link": "http://www.google.com",
+            "color": "#f49e42",
+
+            "fields": [{
+                "title": "Not started",
+                "value": "50",
+                "short": "false"
+            }, {
+                "title": "Development",
+                "value": "40",
+                "short": "false"
+            }, {
+                "title": "Development",
+                "value": "40",
+                "short": "false"
+            }, {
+                "title": "Development",
+                "value": "40",
+                "short": "false"
+            }]
+        }]
+    }
+    return res.json({
+        speech: "speech",
+        displayText: "speech",
+        source: 'webhook-echo-sample',
+        data: {
+            "google": slack_message
+        }
+    });
+});
 
 
 restService.listen((process.env.PORT || 8000), function () {
