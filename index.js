@@ -326,9 +326,9 @@ restService.post('/slack-test', function(req, res) {
         speech: "speech",
         displayText: "speech",
         source: 'webhook-echo-sample',
-        data: {
-            "google": slack_message
-        }
+        // data: {
+        //     "google": slack_message
+        // }
     });
 });
 
