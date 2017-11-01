@@ -254,7 +254,9 @@ restService.post('/prodinfo', function (req, res) {
                     "displayText": "Text response",
                     "platform": "google",
                     "textToSpeech": "Audio response",
-                    "type": "simple_response",
+                    "type": "simple_response"
+                 } ,
+                    {
                     "buttons": [
                         {
                             "openUrlAction": {
@@ -272,6 +274,7 @@ restService.post('/prodinfo', function (req, res) {
                     "title": "AoG Card Title",
                     "type": "basic_card"
                 }
+                
             ]
 
 
