@@ -250,7 +250,11 @@ restService.post('/prodinfo', function (req, res) {
                     "type": 1
                 },
                 {
+                    
                     "displayText": "Text response",
+                    "platform": "google",
+                    "textToSpeech": "Audio response",
+                    "type": "simple_response",
                     "buttons": [
                         {
                             "openUrlAction": {
