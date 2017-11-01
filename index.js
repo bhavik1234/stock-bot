@@ -248,6 +248,24 @@ restService.post('/prodinfo', function (req, res) {
                     "subtitle": "Card Subtitle",
                     "title": "Card Title",
                     "type": 1
+                },
+                {
+                    "buttons": [
+                        {
+                            "openUrlAction": {
+                                "url": "https://www.w3schools.com/w3images/fjords.jpg",
+                            },
+                            "title": "AoG Card Link title"
+                        }
+                    ],
+                    "formattedText": "AoG Card Description",
+                    "image": {
+                        "url": "https://www.w3schools.com/w3images/fjords.jpg",
+                    },
+                    "platform": "google",
+                    "subtitle": "AoG Card Subtitle",
+                    "title": "AoG Card Title",
+                    "type": "basic_card"
                 }
             ]
 
