@@ -250,9 +250,9 @@ restService.post('/prodinfo', function (req, res) {
                 },
                 {
                     
-                    "displayText": "Text response",
+                    "displayText": bestphone,
                     "platform": "google",
-                    "textToSpeech": "Audio response",
+                    "textToSpeech": bestphone,
                     "type": "simple_response"
                  } ,
                 {
