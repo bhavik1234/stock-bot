@@ -256,24 +256,21 @@ restService.post('/prodinfo', function (req, res) {
                     "textToSpeech": "Audio response",
                     "type": "simple_response"
                  } ,
-                    {
-                    "buttons": [
+                {
+                    "platform": "google",
+                    "suggestions": [
                         {
-                            "openUrlAction": {
-                                "url": "https://www.w3schools.com/w3images/fjords.jpg",
-                            },
-                            "title": "AoG Card Link title"
+                            "title": "Chip One"
+                        },
+                        {
+                            "title": "Chip Two"
                         }
                     ],
-                    "formattedText": "AoG Card Description",
-                    "image": {
-                        "url": "https://www.w3schools.com/w3images/fjords.jpg",
-                    },
-                    "platform": "google",
-                    "subtitle": "AoG Card Subtitle",
-                    "title": "AoG Card Title",
-                    "type": "basic_card"
+                    "type": "suggestion_chips"
                 }
+
+                   
+
                 
             ]
 
