@@ -224,7 +224,34 @@ restService.post('/prodinfo', function (req, res) {
         return res.json({
             speech: bestphone,
             displayText: bestphone,
-            source: 'webhook-echo-sample'
+            source: 'webhook-echo-sample',
+            "messages": [
+                {
+                    "imageUrl": "https://cnet2.cbsistatic.com/img/SVArV0NpzrZzcyVYNgybsAB_5e8=/770x433/2017/09/12/61096602-8e41-41d5-a63d-0ed945435e49/iphonexfl.jpg",
+                    "platform": "facebook",
+                    "type": 3
+                },
+                {
+                    "imageUrl": "https://www.w3schools.com/w3images/fjords.jpg",
+                    "platform": "google",
+                    "type": 3
+                },
+                {
+                    "buttons": [
+                        {
+                            "postback": "Card Link URL or text",
+                            "text": "Card Link Title"
+                        }
+                    ],
+                    "imageUrl": "https://www.w3schools.com/w3images/fjords.jpg",
+                    "platform": "facebook",
+                    "subtitle": "Card Subtitle",
+                    "title": "Card Title",
+                    "type": 1
+                }
+            ]
+
+
         });
 
     }
