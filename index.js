@@ -233,7 +233,6 @@ restService.post('/prodinfo', function (req, res) {
                 },
                 {
                     "imageUrl": "https://www.w3schools.com/w3images/fjords.jpg",
-                    "platform": "google",
                     "type": 3
                 },
                 {
