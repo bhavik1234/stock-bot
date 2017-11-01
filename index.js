@@ -259,10 +259,10 @@ restService.post('/prodinfo', function (req, res) {
                     "platform": "google",
                     "suggestions": [
                         {
-                            "title": "Chip One"
+                            "title": "Apple"
                         },
                         {
-                            "title": "Chip Two"
+                            "title": "Samsung"
                         }
                     ],
                     "type": "suggestion_chips"
