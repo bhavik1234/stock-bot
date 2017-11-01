@@ -250,6 +250,7 @@ restService.post('/prodinfo', function (req, res) {
                     "type": 1
                 },
                 {
+                    "displayText": "Text response",
                     "buttons": [
                         {
                             "openUrlAction": {
